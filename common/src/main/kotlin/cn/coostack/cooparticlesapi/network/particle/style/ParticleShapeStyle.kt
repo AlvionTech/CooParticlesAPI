@@ -8,7 +8,7 @@ import cn.coostack.cooparticlesapi.utils.helper.ScaleHelper
 import cn.coostack.cooparticlesapi.utils.helper.impl.StyleBezierValueScaleHelper
 import cn.coostack.cooparticlesapi.utils.helper.impl.StyleScaleHelper
 import cn.coostack.cooparticlesapi.utils.helper.impl.StyleStatusHelper
-import net.minecraft.client.particle.ParticleRenderType
+import cn.coostack.cooparticlesapi.supports.TextureSheetsEnum
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.phys.Vec3
 import java.util.UUID
@@ -179,7 +179,48 @@ open class ParticleShapeStyle(uuid: UUID) :
         }
     }
 
-    fun fastStyleData(color: Vec3, sheet: ParticleRenderType, displayer: (UUID) -> ParticleDisplayer): StyleData {
+    fun fastStyleData(color: Vec3, sheet: TextureSheetsEnum, displayer: (UUID) -> ParticleDisplayer): StyleData {
+        return StyleData(displayer).withParticleHandler {
+            this.colorOfRGB(color.x.toInt(), color.y.toInt(), color.z.toInt())
+            this.textureSheet = sheet.name
+        }
+    }
+
+    fun fastStyleData(
+        color: Vec3,
+        sheet: TextureSheetsEnum,
+        size: Float,
+        displayer: (UUID) -> ParticleDisplayer
+    ): StyleData {
+        return StyleData(displayer).withParticleHandler {
+            this.colorOfRGB(color.x.toInt(), color.y.toInt(), color.z.toInt())
+            this.textureSheet = sheet.name
+            this.size = size
+        }
+    }
+
+    fun fastStyleData(
+        color: Vec3,
+        sheet: TextureSheetsEnum,
+        size: Float,
+        alpha: Float,
+        displayer: (UUID) -> ParticleDisplayer
+    ): StyleData {
+        return StyleData(displayer).withParticleHandler {
+            this.colorOfRGB(color.x.toInt(), color.y.toInt(), color.z.toInt())
+            this.textureSheet = sheet.name
+            this.size = size
+            this.particleAlpha = alpha
+        }
+    }
+
+    fun fastStyleData(sheet: TextureSheetsEnum, displayer: (UUID) -> ParticleDisplayer): StyleData {
+        return StyleData(displayer).withParticleHandler {
+            this.textureSheet = sheet.name
+        }
+    }
+
+    fun fastStyleData(color: Vec3, sheet: String, displayer: (UUID) -> ParticleDisplayer): StyleData {
         return StyleData(displayer).withParticleHandler {
             this.colorOfRGB(color.x.toInt(), color.y.toInt(), color.z.toInt())
             this.textureSheet = sheet
@@ -188,7 +229,7 @@ open class ParticleShapeStyle(uuid: UUID) :
 
     fun fastStyleData(
         color: Vec3,
-        sheet: ParticleRenderType,
+        sheet: String,
         size: Float,
         displayer: (UUID) -> ParticleDisplayer
     ): StyleData {
@@ -201,7 +242,7 @@ open class ParticleShapeStyle(uuid: UUID) :
 
     fun fastStyleData(
         color: Vec3,
-        sheet: ParticleRenderType,
+        sheet: String,
         size: Float,
         alpha: Float,
         displayer: (UUID) -> ParticleDisplayer
@@ -214,7 +255,7 @@ open class ParticleShapeStyle(uuid: UUID) :
         }
     }
 
-    fun fastStyleData(sheet: ParticleRenderType, displayer: (UUID) -> ParticleDisplayer): StyleData {
+    fun fastStyleData(sheet: String, displayer: (UUID) -> ParticleDisplayer): StyleData {
         return StyleData(displayer).withParticleHandler {
             this.textureSheet = sheet
         }

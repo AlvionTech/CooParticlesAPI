@@ -8,7 +8,7 @@ import cn.coostack.cooparticlesapi.utils.helper.ScaleHelper
 import cn.coostack.cooparticlesapi.utils.helper.impl.StyleBezierValueScaleHelper
 import cn.coostack.cooparticlesapi.utils.helper.impl.StyleScaleHelper
 import cn.coostack.cooparticlesapi.utils.helper.impl.StyleStatusHelper
-import net.minecraft.client.particle.ParticleRenderType
+import cn.coostack.cooparticlesapi.supports.TextureSheetsEnum
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.phys.Vec3
 import java.util.SortedMap
@@ -237,7 +237,59 @@ class SequencedParticleShapeStyle(uuid: UUID) :
     fun fastStyleData(
         order: Int,
         color: Vec3,
-        sheet: ParticleRenderType,
+        sheet: TextureSheetsEnum,
+        displayer: (UUID) -> ParticleDisplayer
+    ): SortedStyleData {
+        return SortedStyleData(displayer, order).withParticleHandler {
+            this.colorOfRGB(color.x.toInt(), color.y.toInt(), color.z.toInt())
+            this.textureSheet = sheet.name
+        } as SortedStyleData
+    }
+
+    fun fastStyleData(
+        order: Int,
+        color: Vec3,
+        sheet: TextureSheetsEnum,
+        size: Float,
+        displayer: (UUID) -> ParticleDisplayer
+    ): SortedStyleData {
+        return SortedStyleData(displayer, order).withParticleHandler {
+            this.colorOfRGB(color.x.toInt(), color.y.toInt(), color.z.toInt())
+            this.textureSheet = sheet.name
+            this.size = size
+        } as SortedStyleData
+    }
+
+    fun fastStyleData(
+        order: Int,
+        color: Vec3,
+        sheet: TextureSheetsEnum,
+        size: Float,
+        alpha: Float,
+        displayer: (UUID) -> ParticleDisplayer
+    ): SortedStyleData {
+        return SortedStyleData(displayer, order).withParticleHandler {
+            this.colorOfRGB(color.x.toInt(), color.y.toInt(), color.z.toInt())
+            this.textureSheet = sheet.name
+            this.size = size
+            this.particleAlpha = alpha
+        } as SortedStyleData
+    }
+
+    fun fastStyleData(
+        order: Int,
+        sheet: TextureSheetsEnum,
+        displayer: (UUID) -> ParticleDisplayer
+    ): SortedStyleData {
+        return SortedStyleData(displayer, order).withParticleHandler {
+            this.textureSheet = sheet.name
+        } as SortedStyleData
+    }
+
+    fun fastStyleData(
+        order: Int,
+        color: Vec3,
+        sheet: String,
         displayer: (UUID) -> ParticleDisplayer
     ): SortedStyleData {
         return SortedStyleData(displayer, order).withParticleHandler {
@@ -249,7 +301,7 @@ class SequencedParticleShapeStyle(uuid: UUID) :
     fun fastStyleData(
         order: Int,
         color: Vec3,
-        sheet: ParticleRenderType,
+        sheet: String,
         size: Float,
         displayer: (UUID) -> ParticleDisplayer
     ): SortedStyleData {
@@ -263,7 +315,7 @@ class SequencedParticleShapeStyle(uuid: UUID) :
     fun fastStyleData(
         order: Int,
         color: Vec3,
-        sheet: ParticleRenderType,
+        sheet: String,
         size: Float,
         alpha: Float,
         displayer: (UUID) -> ParticleDisplayer
@@ -278,7 +330,7 @@ class SequencedParticleShapeStyle(uuid: UUID) :
 
     fun fastStyleData(
         order: Int,
-        sheet: ParticleRenderType,
+        sheet: String,
         displayer: (UUID) -> ParticleDisplayer
     ): SortedStyleData {
         return SortedStyleData(displayer, order).withParticleHandler {

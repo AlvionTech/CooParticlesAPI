@@ -46,7 +46,7 @@ class ExampleStyle(val bindPlayer: UUID, uuid: UUID = UUID.randomUUID()) :
                             .withParticleHandler {
                                 colorOfRGB(127, 139, 175)
                                 this.scale(1.5f)
-                                textureSheet = ParticleRenderType.PARTICLE_SHEET_LIT
+                                textureSheet = ParticleRenderType.PARTICLE_SHEET_LIT.toString()
                             }
                     })
             putAll(

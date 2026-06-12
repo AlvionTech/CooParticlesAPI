@@ -24,7 +24,6 @@ import cn.coostack.cooparticlesapi.test.options.particle.composition.TestModelCo
 import cn.coostack.cooparticlesapi.test.options.particle.composition.TestNoiseLightComposition
 import cn.coostack.cooparticlesapi.test.options.particle.composition.TestSeqComposition
 import cn.coostack.cooparticlesapi.test.options.particle.composition.TestShapedComposition
-import cn.coostack.cooparticlesapi.test.options.particle.composition.TestSimpleParticleComposition
 import cn.coostack.cooparticlesapi.test.options.particle.emitter.InterpolatorTestEmitter
 import cn.coostack.cooparticlesapi.test.options.particle.emitter.TestAlphaShaderEmitter
 import cn.coostack.cooparticlesapi.test.options.particle.emitter.TestCommandEmitter
@@ -53,12 +52,6 @@ class APITestGroupBuilder(val player: Player) : TestGroupBuilder {
 
     override fun build(): TestGroup {
         return GamingTestGroup(player, groupID())
-            .appendOption {
-                SimpleCompositionOption(
-                    TestSimpleParticleComposition(player.eyePosition.add(player.forward.scale(3.0)), player.level()),
-                    -1
-                )
-            }
             .appendOption {
                 SimpleEmitterOption(
                     TestDisplayEntityAutoEmitters(player.eyePosition, player.level()).apply {
@@ -224,7 +217,7 @@ class APITestGroupBuilder(val player: Player) : TestGroupBuilder {
                     TestCommandEmitter(player.eyePosition, player.level()).apply {
                         direction = player.forward
                         gravity = 0.05
-                        template.setTextureSheet(CooParticleTextureSheet.ADDITION_BLEND_TRANSLUCENT)
+                        template.setTextureSheet(CooParticleTextureSheet.ADDITION_BLEND_TRANSLUCENT.toString())
                         template.color = Vector3f(0.35f, 0.70f, 1.00f)
                         maxTick = -1
                         ballRadius = 1.0

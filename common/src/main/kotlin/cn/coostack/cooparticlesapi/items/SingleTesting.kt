@@ -41,7 +41,7 @@ class SingleTesting : Item(Properties().stacksTo(1)) {
                 maxTick = 1000
                 shootMovement = user.forward * 0.8
                 template.apply {
-                    setTextureSheet(CooParticleTextureSheet.ADDITION_BLEND)
+                    setTextureSheet(CooParticleTextureSheet.ADDITION_BLEND.toString())
                     color = Math3DUtil.colorOf(210, 80, 255)
                     size = 1.8f
                 }

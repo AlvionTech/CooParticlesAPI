@@ -77,7 +77,7 @@ abstract class ControlableParticle(
         }
 
     /** 粒子渲染类型 可以使用 */
-    var textureSheet: ParticleRenderType = ParticleRenderType.PARTICLE_SHEET_LIT
+    var textureSheet: String = "PARTICLE_SHEET_LIT"
 
     private var currentAxis: Vec3 = Vec3(0.0, 1.0, 0.0)
     var previewAxis: Vec3 = currentAxis
@@ -620,7 +620,7 @@ abstract class ControlableParticle(
 
 
     override fun getRenderType(): ParticleRenderType {
-        return textureSheet
+        return cn.coostack.cooparticlesapi.client.particles.ClientParticleTextureManager.getTextureSheet(textureSheet)
     }
 
     /** 在黑夜里粒子也会很亮 */

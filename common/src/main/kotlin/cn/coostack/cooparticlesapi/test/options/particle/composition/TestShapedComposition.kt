@@ -34,7 +34,7 @@ class TestShapedComposition(position: Vec3, world: Level? = null) : AutoParticle
                             ) {
                                 CompositionData()
                                     .addParticleInstanceInit {
-                                        textureSheet = CooParticleTextureSheet.ADDITION_BLEND_TRANSLUCENT
+                                        textureSheet = CooParticleTextureSheet.ADDITION_BLEND_TRANSLUCENT.toString()
                                     }
                             }.applyDisplayAction {
                                 addPreTickAction {
@@ -56,7 +56,7 @@ class TestShapedComposition(position: Vec3, world: Level? = null) : AutoParticle
                                     .rotateTo(-RelativeLocation.yAxis())
                             ) {
                                 CompositionData().addParticleInstanceInit {
-                                    textureSheet = CooParticleTextureSheet.ADDITION_BLEND_TRANSLUCENT
+                                    textureSheet = CooParticleTextureSheet.ADDITION_BLEND_TRANSLUCENT.toString()
 
                                 }
                             }
@@ -84,7 +84,7 @@ class TestShapedComposition(position: Vec3, world: Level? = null) : AutoParticle
                                 CompositionData().apply {
                                     this.order = it
                                 }.addParticleInstanceInit {
-                                    textureSheet = CooParticleTextureSheet.ADDITION_BLEND_TRANSLUCENT
+                                    textureSheet = CooParticleTextureSheet.ADDITION_BLEND_TRANSLUCENT.toString()
 
                                 }
                             }

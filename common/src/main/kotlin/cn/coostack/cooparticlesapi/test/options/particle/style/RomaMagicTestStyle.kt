@@ -55,7 +55,7 @@ class RomaMagicTestStyle(uuid: UUID = UUID.randomUUID()) :
                             ParticleDisplayer.withSingle(ControlableEndRodEffect(it))
                         }.withParticleHandler {
                             this.size = 0.1f
-                            this.textureSheet = ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT
+                            this.textureSheet = ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT.toString()
                         }
                     }.toggleOnDisplay {
                         this.addPreTickAction {
@@ -151,7 +151,7 @@ class RomaMagicTestStyle(uuid: UUID = UUID.randomUUID()) :
                                     Math3DUtil.colorOf(255, 236, 247)
                                 )
                             }
-                            this.textureSheet = ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT
+                            this.textureSheet = ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT.toString()
                             size = GraphMathHelper.lerp((rel.length() - 3) / 6.0, 0.1f, 1.5f)
                         }
                     }.toggleOnDisplay {

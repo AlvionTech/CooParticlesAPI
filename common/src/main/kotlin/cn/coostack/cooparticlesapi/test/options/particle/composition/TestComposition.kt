@@ -25,7 +25,7 @@ class TestComposition(position: Vec3, world: Level? = null) : AutoParticleCompos
             .createWithCompositionData {
                 CompositionData()
                     .addParticleInstanceInit {
-                        textureSheet = CooParticleTextureSheet.ADDITION_BLEND_TRANSLUCENT
+                        textureSheet = CooParticleTextureSheet.ADDITION_BLEND_TRANSLUCENT.toString()
                         colorOfRGBA(255, 128, 230, 1f)
                     }
             }

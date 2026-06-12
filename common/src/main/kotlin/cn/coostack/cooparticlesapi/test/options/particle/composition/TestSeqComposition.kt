@@ -34,7 +34,7 @@ class TestSeqComposition(position: Vec3, world: Level? = null) : AutoSequencedPa
                     .apply {
                         order = o++
                         this.addParticleInstanceInit {
-                            textureSheet = CooParticleTextureSheet.ADDITION_BLEND_TRANSLUCENT
+                            textureSheet = CooParticleTextureSheet.ADDITION_BLEND_TRANSLUCENT.toString()
 
                         }
                     }

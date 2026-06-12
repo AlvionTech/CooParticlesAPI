@@ -122,7 +122,7 @@ class ScaleCircleGroupClient(uuid: UUID, val bindPlayer: UUID) : ControlablePart
                         lifetime = 120
                         size = 0.2f
                         particleAlpha = 0.8f
-                        textureSheet = ParticleRenderType.PARTICLE_SHEET_LIT
+                        textureSheet = ParticleRenderType.PARTICLE_SHEET_LIT.toString()
                     }.withControler { c ->
                         c.controlAction {
                             currentAge = random.nextInt(lifetime)

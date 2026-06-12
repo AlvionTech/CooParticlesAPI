@@ -1,7 +1,6 @@
 package cn.coostack.cooparticlesapi.particles
 
-import cn.coostack.cooparticlesapi.network.particle.emitters.ControlableParticleData
-import cn.coostack.cooparticlesapi.network.particle.emitters.ControlableParticleData.Companion.particleTexturesMapper
+import cn.coostack.cooparticlesapi.client.particles.ClientParticleTextureManager
 import com.mojang.blaze3d.platform.GlStateManager
 import com.mojang.blaze3d.systems.RenderSystem
 import com.mojang.blaze3d.vertex.BufferBuilder
@@ -75,17 +74,17 @@ object CooParticleTextureSheet {
     })
 
     fun init() {
-        ControlableParticleData.registerRenderType(ParticleRenderType.PARTICLE_SHEET_LIT)
-        ControlableParticleData.registerRenderType(ParticleRenderType.TERRAIN_SHEET)
-        ControlableParticleData.registerRenderType(ParticleRenderType.NO_RENDER)
-        ControlableParticleData.registerRenderType(ParticleRenderType.CUSTOM)
-        ControlableParticleData.registerRenderType(ParticleRenderType.PARTICLE_SHEET_OPAQUE)
-        ControlableParticleData.registerRenderType(ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT)
+        ClientParticleTextureManager.registerRenderType(ParticleRenderType.PARTICLE_SHEET_LIT)
+        ClientParticleTextureManager.registerRenderType(ParticleRenderType.TERRAIN_SHEET)
+        ClientParticleTextureManager.registerRenderType(ParticleRenderType.NO_RENDER)
+        ClientParticleTextureManager.registerRenderType(ParticleRenderType.CUSTOM)
+        ClientParticleTextureManager.registerRenderType(ParticleRenderType.PARTICLE_SHEET_OPAQUE)
+        ClientParticleTextureManager.registerRenderType(ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT)
     }
 
     fun register(type: ParticleRenderType): ParticleRenderType {
         sheets.add(type)
-        ControlableParticleData.registerRenderType(type)
+        ClientParticleTextureManager.registerRenderType(type)
         return type
     }
 }

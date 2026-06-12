@@ -35,7 +35,7 @@ class TestNoiseLightComposition(position: Vec3, world: Level? = null) : AutoPart
             .createWithCompositionDataWithoutClone {
                 CompositionData()
                     .addParticleInstanceInit {
-                        textureSheet = CooParticleTextureSheet.ADDITION_BLEND_TRANSLUCENT
+                        textureSheet = CooParticleTextureSheet.ADDITION_BLEND_TRANSLUCENT.toString()
                     }
             }
     }
