@@ -26,7 +26,7 @@ object ParticleEventHandlerManager {
             return
         }
         val before = registerHandlers.size
-        CooParticlesConstants.logger.info("正在自动注册 ParticleEventHandler")
+        CooParticlesConstants.logger.info("Auto-registering ParticleEventHandler")
         var count = 0
         val start = System.currentTimeMillis()
         CooAPIScanner.getWithAnnotation(
@@ -36,7 +36,7 @@ object ParticleEventHandlerManager {
             findListenerHandlers(it)
         }
         val end = System.currentTimeMillis()
-        CooParticlesConstants.logger.info("EmittersEvents 注册完成 耗时 ${end - start} ms 扫描了 $count 个类 实际注册 :${registerHandlers.size - before}")
+        CooParticlesConstants.logger.info("EmittersEvents registration complete, took ${end - start} ms scanned $count classes, actually registered:${registerHandlers.size - before}")
     }
 
     private fun findListenerHandlers(target: SimpleClassInfo) {

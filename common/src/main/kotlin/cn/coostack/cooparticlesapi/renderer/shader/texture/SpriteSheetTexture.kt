@@ -31,9 +31,9 @@ class SpriteSheetTexture(
     private val sheetFrameCapacity = columns * rows
 
     init {
-        require(columns > 0) { "columns 必须大于 0" }
-        require(rows > 0) { "rows 必须大于 0" }
-        require(frameCount > 0) { "frameCount 必须大于 0" }
+        require(columns > 0) { "columns must be greater than 0" }
+        require(rows > 0) { "rows must be greater than 0" }
+        require(frameCount > 0) { "frameCount must be greater than 0" }
         require(frameCount <= sheetFrameCapacity) {
             "frameCount($frameCount) 不能超过 sprite-sheet 容量 $sheetFrameCapacity"
         }
@@ -41,7 +41,7 @@ class SpriteSheetTexture(
         require(firstFrame + frameCount <= sheetFrameCapacity) {
             "firstFrame + frameCount 不能超过 sprite-sheet 容量 $sheetFrameCapacity"
         }
-        require(framesPerSecond > 0.0f) { "framesPerSecond 必须大于 0" }
+        require(framesPerSecond > 0.0f) { "framesPerSecond must be greater than 0" }
     }
 
     fun frameAt(timeSeconds: Float): SpriteFrameRegion {

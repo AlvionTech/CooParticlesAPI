@@ -15,7 +15,7 @@ class CooItemModelProvider(output: PackOutput, existingFileHelper: ExistingFileH
         registerWith(CooItems.SINGLE_TESTING)
         registerWith(CooItems.API_GROUP_TESTING)
         registerWith(CooItems.testSequencedParticle)
-        CooParticlesConstants.logger.info("物品模型注册.............. Item Model generated")
+        CooParticlesConstants.logger.info("Item model registration.............. Item Model generated")
     }
 
     private fun registerWith(item: CommonDeferredItem) {

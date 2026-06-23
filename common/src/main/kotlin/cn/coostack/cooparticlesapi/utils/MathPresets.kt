@@ -182,7 +182,7 @@ object MathPresets {
     fun getRomaOffsetX(scale: Double): Double = 0.125 * scale * 2
     fun getRomaOffsetY(scale: Double): Double = 0.25 * scale * 2
     fun withRomaNumber(i: Int, scale: Double): List<RelativeLocation> {
-        require(i in 1..12) { "只支持1-10的罗马数字" }
+        require(i in 1..12) { "Only Roman numerals 1-10 are supported" }
         return when (i) {
             1 -> romaI(scale)
             2 -> romaII(scale)

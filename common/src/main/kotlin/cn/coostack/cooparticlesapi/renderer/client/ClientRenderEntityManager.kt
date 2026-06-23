@@ -23,7 +23,7 @@ import kotlin.collections.iterator
 
 object ClientRenderEntityManager {
     val minecraft: Minecraft = getInstance()
-    private val entities = HashMap<UUID, RenderEntityInstance<RenderEntity>>()
+    private val entities = java.util.concurrent.ConcurrentHashMap<UUID, RenderEntityInstance<RenderEntity>>()
     private var frameStatePrepared = false
     private var cachedTickDelta = 0f
     private val cachedViewMatrix = Matrix4f()

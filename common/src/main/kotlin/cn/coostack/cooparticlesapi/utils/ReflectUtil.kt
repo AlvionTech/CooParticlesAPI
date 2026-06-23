@@ -22,7 +22,7 @@ object ReflectUtil {
         val start = System.currentTimeMillis()
         invoker.run()
         val end = System.currentTimeMillis()
-        CooParticlesConstants.logger.info("执行${name}完毕 : 耗时${end - start}ms")
+        CooParticlesConstants.logger.info("Executed ${name}, took ${end - start}ms")
     }
 
     @JvmStatic
@@ -30,7 +30,7 @@ object ReflectUtil {
         val start = System.currentTimeMillis()
         val res = invoker()
         val end = System.currentTimeMillis()
-        CooParticlesConstants.logger.info("执行并返回${name}完毕 : 耗时${end - start}ms")
+        CooParticlesConstants.logger.info("Executed and returned ${name}, took ${end - start}ms")
         return res
     }
 

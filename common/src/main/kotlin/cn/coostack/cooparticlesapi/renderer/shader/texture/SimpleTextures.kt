@@ -16,7 +16,7 @@ class SimpleTextures : GlTextures {
     }
 
     override fun addTexture(texture: GlTexture) {
-        require(textureWithChannel.size < 32) { "没有那么多材质通道!" }
+        require(textureWithChannel.size < 32) { "Not that many texture channels!" }
         textureWithChannel.add(texture)
     }
 

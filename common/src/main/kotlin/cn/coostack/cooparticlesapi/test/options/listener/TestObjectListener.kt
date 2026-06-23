@@ -29,7 +29,7 @@ object TestObjectListener {
 
     @EventHandler
     fun onTestFailed(event: TestEvent) {
-        throw NullPointerException("测试空指针异常 - 事件执行失败")
+        throw NullPointerException("Test NullPointerException - event execution failed")
     }
 
     @EventHandler(EventPriority.LOW)

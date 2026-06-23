@@ -43,14 +43,14 @@ object DataHolderManager {
 
     fun registerScanner() {
         val start = System.currentTimeMillis()
-        CooParticlesConstants.logger.info("正在自动注册 DataHolder")
+        CooParticlesConstants.logger.info("Auto-registering DataHolder")
         CooAPIScanner.getWithAnnotation(CooAutoRegister::class.java)
             .iterator()
             .forEach { target ->
                 findListenerHandlers(target)
             }
         val end = System.currentTimeMillis()
-        CooParticlesConstants.logger.info("DataHolder 注册完成 耗时 ${end - start} ms")
+        CooParticlesConstants.logger.info("DataHolder registration complete, took ${end - start} ms")
     }
 
     private fun findListenerHandlers(target: SimpleClassInfo) {

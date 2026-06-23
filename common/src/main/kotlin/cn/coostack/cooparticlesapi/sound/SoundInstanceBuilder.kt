@@ -313,7 +313,7 @@ class SoundInstanceBuilder @JvmOverloads constructor(
         if (playerLevel is ServerLevel) {
             return playerLevel
         }
-        throw IllegalStateException("构建服务端音频实例前必须指定 ServerLevel、ServerPlayer 或服务端实体。")
+        throw IllegalStateException("A ServerLevel, ServerPlayer, or server-side entity must be specified before building a server-side sound instance.")
     }
 
     /**

@@ -26,7 +26,7 @@ class ClientContext(
      */
     fun reply(response: CooPacket) {
         if (kind != CooPacketKind.REQUEST) {
-            throw IllegalStateException("CooPacket reply 只能在 REQUEST 上下文中使用, 当前: $kind")
+            throw IllegalStateException("CooPacket reply can only be used in a REQUEST context, current: $kind")
         }
         CooClientPacketManager.replyInternal(response, correlationId)
     }

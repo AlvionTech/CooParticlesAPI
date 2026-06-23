@@ -8,24 +8,24 @@ import net.minecraft.server.level.ServerPlayer
 import java.util.UUID
 
 object ServerRenderEntityManager {
-    val entities = HashMap<UUID, RenderEntity>()
+    val entities = java.util.concurrent.ConcurrentHashMap<UUID, RenderEntity>()
 
-    val playerViewable = HashMap<UUID, HashSet<RenderEntity>>()
+    val playerViewable = java.util.concurrent.ConcurrentHashMap<UUID, MutableSet<RenderEntity>>()
 
 
     fun spawn(entity: RenderEntity) {
         entities[entity.uuid] = entity
     }
 
-    fun getPlayerViewable(player: UUID): HashSet<RenderEntity> {
-        return playerViewable[player] ?: HashSet()
+    fun getPlayerViewable(player: UUID): MutableSet<RenderEntity> {
+        return playerViewable[player] ?: java.util.concurrent.ConcurrentHashMap.newKeySet()
     }
 
     fun initPlayer(player: UUID) {
         if (playerViewable.containsKey(player)) {
             return
         }
-        playerViewable[player] = HashSet()
+        playerViewable[player] = java.util.concurrent.ConcurrentHashMap.newKeySet()
     }
 
     fun clearEmptyData() {

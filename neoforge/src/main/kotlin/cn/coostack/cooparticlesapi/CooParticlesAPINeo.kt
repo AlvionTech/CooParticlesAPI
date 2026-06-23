@@ -29,7 +29,7 @@ object CooParticlesAPINeo {
 
 
     fun onCommon(event: FMLCommonSetupEvent) {
-        CooParticlesConstants.logger.info("所有模组加载完毕 CooParticlesAPI->Called test")
+        CooParticlesConstants.logger.info("All mods loaded, CooParticlesAPI->Called test")
         /**
          * 这里直接塞入CooEventBus
          */

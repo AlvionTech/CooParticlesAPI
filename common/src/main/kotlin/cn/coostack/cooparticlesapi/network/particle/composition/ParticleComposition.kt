@@ -453,7 +453,7 @@ abstract class ParticleComposition : ServerControler<ParticleComposition>,
         }
         val toPos = position.add(pos.x, pos.y, pos.z)
         val controler = displayer.display(toPos, world as ClientLevel) ?: let {
-            CooParticlesConstants.logger.error("display生成了null 错误target类型 ${displayer::class.java.name}")
+            CooParticlesConstants.logger.error("display produced null, invalid target type ${displayer::class.java.name}")
             return
         }
         if (controler is ParticleControler) {

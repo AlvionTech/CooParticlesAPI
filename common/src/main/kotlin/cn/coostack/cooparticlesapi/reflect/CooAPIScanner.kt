@@ -15,7 +15,7 @@ object CooAPIScanner {
         if (loaded) return
         loaded = true
         val start = System.currentTimeMillis()
-        CooParticlesConstants.logger.info("开始使用ClassGraph扫描...")
+        CooParticlesConstants.logger.info("Starting ClassGraph scan...")
         result = ClassGraph()
             .enableClassInfo()
             .enableAnnotationInfo()
@@ -27,7 +27,7 @@ object CooAPIScanner {
             inputScanResult(SimpleClassInfo(it.name, it.annotations.map { it -> it.name }.toHashSet()))
         }
         val end = System.currentTimeMillis()
-        CooParticlesConstants.logger.info("扫描结果处理完毕 耗时:${end - start}ms")
+        CooParticlesConstants.logger.info("Scan results processed, took ${end - start}ms")
     }
 
 
@@ -72,6 +72,6 @@ object CooAPIScanner {
     @JvmStatic
     fun registerPacket(packageName: String) {
         needSearchedPacket.add(packageName)
-        CooParticlesConstants.logger.info("注册事件包: $packageName")
+        CooParticlesConstants.logger.info("Registering event package: $packageName")
     }
 }

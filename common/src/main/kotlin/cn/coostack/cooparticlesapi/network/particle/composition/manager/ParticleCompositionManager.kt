@@ -58,7 +58,7 @@ object ParticleCompositionManager {
 
     fun registerScanner() {
         val start = System.currentTimeMillis()
-        CooParticlesConstants.logger.info("正在自动注册 Compositions")
+        CooParticlesConstants.logger.info("Auto-registering Compositions")
         CooAPIScanner.getWithAnnotation(CooAutoRegister::class.java)
             .iterator()
             .forEach {
@@ -70,7 +70,7 @@ object ParticleCompositionManager {
                 register(clazz as Class<out ParticleComposition>)
             }
         val end = System.currentTimeMillis()
-        CooParticlesConstants.logger.info("Compositions 注册完成 耗时 ${end - start} ms")
+        CooParticlesConstants.logger.info("Compositions registration complete, took ${end - start} ms")
     }
 
 

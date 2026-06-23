@@ -351,7 +351,7 @@ object CodecHelper {
     fun codecOf(type: Type): StreamCodec<out FriendlyByteBuf, *> {
         if (type is Class<*>) {
             return supposedTypes[type.name]
-                ?: throw IllegalArgumentException("不支持的类型: ${type.name}")
+                ?: throw IllegalArgumentException("Unsupported type: ${type.name}")
         }
 
         if (type is ParameterizedType) {
@@ -370,12 +370,12 @@ object CodecHelper {
             }
         }
 
-        throw IllegalArgumentException("不支持的字段类型: $type")
+        throw IllegalArgumentException("Unsupported field type: $type")
     }
 
     fun codecList(type: Type): StreamCodec<out FriendlyByteBuf, *> {
         if (type !is ParameterizedType) {
-            throw IllegalArgumentException("List字段必须声明具体泛型: $type")
+            throw IllegalArgumentException("List field must declare a concrete generic type: $type")
         }
 
         val elementType = type.actualTypeArguments[0]
@@ -402,7 +402,7 @@ object CodecHelper {
 
     fun codecSet(type: Type): StreamCodec<out FriendlyByteBuf, *> {
         if (type !is ParameterizedType) {
-            throw IllegalArgumentException("Set字段必须声明具体泛型: $type")
+            throw IllegalArgumentException("Set field must declare a concrete generic type: $type")
         }
 
         val elementType = type.actualTypeArguments[0]
@@ -429,7 +429,7 @@ object CodecHelper {
 
     fun codecMap(type: Type): StreamCodec<out FriendlyByteBuf, *> {
         if (type !is ParameterizedType) {
-            throw IllegalArgumentException("Map字段必须声明具体泛型: $type")
+            throw IllegalArgumentException("Map field must declare a concrete generic type: $type")
         }
 
         val keyType = type.actualTypeArguments[0]

@@ -51,7 +51,7 @@ object DisplayEntityManager {
     }
 
     fun registerScanner() {
-        CooParticlesConstants.logger.info("正在自动注册 DisplayEntity")
+        CooParticlesConstants.logger.info("Auto-registering DisplayEntity")
         CooAPIScanner.getWithAnnotation(CooAutoRegister::class.java)
             .iterator()
             .forEach {

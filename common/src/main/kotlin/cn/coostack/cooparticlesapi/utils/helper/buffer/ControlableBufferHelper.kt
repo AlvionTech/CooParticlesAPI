@@ -33,7 +33,7 @@ object ControlableBufferHelper {
                 val value = args[anno.name] ?: return@forEach
                 if (it.modifiers == Modifier.FINAL) {
                     CooParticlesConstants.logger
-                        .warn("无法设置final属性 ${it.name} 为 $value")
+                        .warn("Cannot set final field ${it.name} to $value")
                     return@forEach
                 }
                 it.set(buf, value.loadedValue)

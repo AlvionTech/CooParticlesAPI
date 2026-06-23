@@ -34,6 +34,6 @@ object CooItemGroup {
 
 
     fun reg() {
-        CooParticlesConstants.logger.info("注册物品分组成功")
+        CooParticlesConstants.logger.info("Item group registered successfully")
     }
 }

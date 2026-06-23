@@ -11,8 +11,8 @@ abstract class ProgressSequencedHelper(var maxCount: Int, var progressMaxTick: I
     private var remainder = 0.0 // 用于处理非整除情况
 
     init {
-        require(maxCount > 0) { "maxCount 必须大于 0" }
-        require(progressMaxTick > 0) { "progressMaxTick 必须大于 0" }
+        require(maxCount > 0) { "maxCount must be greater than 0" }
+        require(progressMaxTick > 0) { "progressMaxTick must be greater than 0" }
         recalculateStep()
     }
 

@@ -39,7 +39,7 @@ object FourierPhotoUtil {
         val builders = toFourierBuilders(
             image, alphaThreshold, sampleCount, harmonics, step, centerMode, sortByAmplitude
         )
-        require(builders.isNotEmpty()) { "未找到任何轮廓：请检查图片透明通道/alphaThreshold=$alphaThreshold" }
+        require(builders.isNotEmpty()) { "No contours found: please check the image alpha channel / alphaThreshold=$alphaThreshold" }
         // 取最大连通块（我们在 toFourierBuilders 里会按面积从大到小排序）
         return builders.first()
     }

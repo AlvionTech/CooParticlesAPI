@@ -29,7 +29,7 @@ class CircularQueue<T>(val capacity: Int) : Iterable<T> {
     }
 
     operator fun get(index: Int): T {
-        if (index > size) throw IndexOutOfBoundsException("超过你设定的capacity或者你还没输入那么多元素 size: $size, index: $index")
+        if (index > size) throw IndexOutOfBoundsException("Exceeds the capacity you set, or you have not added that many elements yet. size: $size, index: $index")
         val i = if (size < capacity) index else (index + head) % capacity
         return data[i] as T
     }

@@ -251,14 +251,14 @@ object ParticleEmittersManager {
         }
         val start = System.currentTimeMillis()
         handled = true
-        CooParticlesConstants.logger.info("正在自动注册 Emitters")
+        CooParticlesConstants.logger.info("Auto-registering Emitters")
         CooAPIScanner.getWithAnnotation(
             CooAutoRegister::class.java
         ).forEach {
             findListenerHandlers(it)
         }
         val end = System.currentTimeMillis()
-        CooParticlesConstants.logger.info("Emitters 注册完成 耗时 ${end - start} ms")
+        CooParticlesConstants.logger.info("Emitters registration complete, took ${end - start} ms")
     }
 
     private fun findListenerHandlers(target: SimpleClassInfo) {

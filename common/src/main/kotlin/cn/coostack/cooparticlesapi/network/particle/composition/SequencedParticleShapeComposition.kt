@@ -154,7 +154,7 @@ class SequencedParticleShapeComposition(uuid: UUID) : SequencedParticleCompositi
     }
 
     override fun getCodec(): StreamCodec<FriendlyByteBuf, ParticleComposition> {
-        throw NotImplementedError("此类只作为客户端嵌套使用， 不能单独生成！ ")
+        throw NotImplementedError("This class is only for client-side nested use; it cannot be spawned on its own! ")
     }
 
     /**

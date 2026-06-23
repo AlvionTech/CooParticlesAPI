@@ -17,7 +17,7 @@ class LinerLevelLerp {
 
     fun setLevelProgress(level: Int, progress: Double): LinerLevelLerp {
         if (level >= levels.size) {
-            throw ArrayIndexOutOfBoundsException("没有那么多的插值等级")
+            throw ArrayIndexOutOfBoundsException("Not that many interpolation levels")
         }
         prevLevels[level] = levels[level]
         levels[level] = progress

@@ -53,7 +53,7 @@ object CooPacketRegistry {
             }
         }
         val end = System.currentTimeMillis()
-        CooParticlesConstants.logger.info("CooPacket 自动注册完成: 共 $registered 个, 耗时 ${end - start}ms")
+        CooParticlesConstants.logger.info("CooPacket auto-registration complete: $registered total, took ${end - start}ms")
     }
 
     /**
@@ -63,14 +63,14 @@ object CooPacketRegistry {
         val sample = try {
             packetClass.getDeclaredConstructor().apply { isAccessible = true }.newInstance()
         } catch (e: NoSuchMethodException) {
-            throw IllegalStateException("CooPacket ${packetClass.name} 必须提供空构造函数", e)
+            throw IllegalStateException("CooPacket ${packetClass.name} must provide a no-arg constructor", e)
         }
         val id = sample.id()
         @Suppress("UNCHECKED_CAST")
         val codec = sample.codec() as StreamCodec<FriendlyByteBuf, CooPacket>
         val existing = byId[id]
         if (existing != null && existing.packetClass != packetClass) {
-            throw IllegalStateException("CooPacket ID 冲突: $id 同时被 ${existing.packetClass.name} 和 ${packetClass.name} 使用")
+            throw IllegalStateException("CooPacket ID conflict: $id is used by both ${existing.packetClass.name} and ${packetClass.name}")
         }
         byId[id] = Entry(packetClass, codec)
         byClass[packetClass] = id
@@ -110,7 +110,7 @@ object CooPacketRegistry {
         return try {
             entry.codec.decode(buf)
         } catch (e: Throwable) {
-            CooParticlesConstants.logger.error("CooPacket 解码失败: $id", e)
+            CooParticlesConstants.logger.error("CooPacket decoding failed: $id", e)
             null
         }
     }

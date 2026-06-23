@@ -63,7 +63,7 @@ object CooParticlesAPINeoModInitListener {
     @SubscribeEvent
     fun onPacketReceiverInit(event: RegisterPayloadHandlersEvent) {
         val registrar = event.registrar(CooParticlesConstants.MOD_ID)
-        CooParticlesConstants.logger.info("正在注册数据包 register packets")
+        CooParticlesConstants.logger.info("Registering packets")
         registrar.playToClient(
             PacketRenderEntityS2C.payloadID,
             PacketRenderEntityS2C.CODEC

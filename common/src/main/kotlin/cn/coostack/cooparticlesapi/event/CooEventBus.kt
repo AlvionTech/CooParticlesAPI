@@ -44,7 +44,7 @@ object CooEventBus {
                 appendListenerTarget(value?.modId ?: CooParticlesConstants.MOD_ID, it.name)
             }
         val end = System.currentTimeMillis()
-        CooParticlesConstants.logger.info("事件扫描完毕 耗时 ${end - start} ms")
+        CooParticlesConstants.logger.info("Event scan complete, took ${end - start} ms")
     }
 
 

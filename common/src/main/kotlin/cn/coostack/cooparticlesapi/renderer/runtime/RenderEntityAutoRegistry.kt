@@ -18,7 +18,7 @@ object RenderEntityAutoRegistry {
      * 扫描带 `@CooAutoRegister` 的类型，并尝试自动注册其中的 RenderEntity。
      */
     fun registerScanner() {
-        CooParticlesConstants.logger.info("正在自动注册 RenderEntity")
+        CooParticlesConstants.logger.info("Auto-registering RenderEntity")
         CooAPIScanner.getWithAnnotation(CooAutoRegister::class.java)
             .iterator()
             .forEach { candidate ->

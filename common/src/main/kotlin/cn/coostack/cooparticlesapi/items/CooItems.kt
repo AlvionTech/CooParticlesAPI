@@ -45,7 +45,7 @@ object CooItems {
      * 交给对应平台处理后, 在重新赋值
      */
     fun getRegisterItems() {
-        CooParticlesConstants.logger.info("创建物品成功 in common")
+        CooParticlesConstants.logger.info("Items created successfully in common")
     }
 
 }

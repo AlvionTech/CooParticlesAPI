@@ -150,7 +150,7 @@ object CooParticlesAPIClient {
         RenderEffectRegistry.register(BuiltinRenderEffectTypes.MASK_BLOOM, OpenGlMaskBloomEffectExecutor)
         ClientRenderEntityManager.init()
         ShaderProgramRegistry.reinitializeAll()
-        CooParticlesConstants.logger.info("初始化渲染管线")
+        CooParticlesConstants.logger.info("Initializing render pipeline")
     }
 
     @JvmStatic
