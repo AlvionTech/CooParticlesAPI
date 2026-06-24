@@ -15,6 +15,7 @@ import cn.coostack.cooparticlesapi.network.particle.emitters.ParticleEmittersMan
 import cn.coostack.cooparticlesapi.network.particle.emitters.environment.wind.WindDirections
 import cn.coostack.cooparticlesapi.network.particle.emitters.event.ParticleEventHandlerManager
 import cn.coostack.cooparticlesapi.network.particle.style.ParticleStyleManager
+import cn.coostack.cooparticlesapi.network.packet.server.PacketClearClientStateS2C
 import cn.coostack.cooparticlesapi.platform.CooParticlesServices
 import cn.coostack.cooparticlesapi.reflect.CooAPIScanner
 import cn.coostack.cooparticlesapi.renderer.server.ServerRenderEntityManager
@@ -34,9 +35,35 @@ object CooParticlesAPI {
     var renderInit = false
     lateinit var server: MinecraftServer
     lateinit var registryAccess: RegistryAccess
+    private var activeServer: MinecraftServer? = null
+    private var activeRegistryAccess: RegistryAccess? = null
+
+    @get:JvmStatic
+    val serverOrNull: MinecraftServer?
+        get() = activeServer
+
+    @get:JvmStatic
+    val registryAccessOrNull: RegistryAccess?
+        get() = activeRegistryAccess
 
     @JvmField
     val scheduler = CooScheduler()
+
+    @JvmStatic
+    fun <T> invokeIfServerNotNull(block: (MinecraftServer) -> T): T? {
+        val server = serverOrNull ?: return null
+        return block(server)
+    }
+
+    @JvmStatic
+    fun <T> invokeAsServer(block: (MinecraftServer) -> T): T? {
+        return invokeIfServerNotNull(block)
+    }
+
+    @JvmStatic
+    fun safelyServerInstance(): MinecraftServer? {
+        return serverOrNull
+    }
 
     @JvmStatic
     fun init() {
@@ -74,10 +101,27 @@ object CooParticlesAPI {
         clearServerState()
         this.server = server
         this.registryAccess = server.registryAccess()
+        activeServer = server
+        activeRegistryAccess = registryAccess
     }
 
     fun onServerStop() {
         clearServerState()
+        activeServer = null
+        activeRegistryAccess = null
+    }
+
+    fun clearTransientState() {
+        clearServerState()
+        ServerSoundManager.clear()
+        ServerSoundLoopManager.clear()
+        scheduler.clear()
+        subTicks = 0.0
+        invokeIfServerNotNull { server ->
+            server.playerList.players.forEach {
+                CooParticlesServices.SERVER_NETWORK.send(PacketClearClientStateS2C, it)
+            }
+        }
     }
 
     private fun clearServerState() {
