@@ -50,9 +50,9 @@ class LinerLevelLerp {
     fun lerp(min: Vec3, max: Vec3): Vec3 {
         val minX = min.x
         val maxX = max.x
-        val minY = max.y
+        val minY = min.y
         val maxY = max.y
-        val minZ = max.z
+        val minZ = min.z
         val maxZ = max.z
         return Vec3(
             lerp(minX, maxX),
@@ -64,9 +64,9 @@ class LinerLevelLerp {
     fun lerp(min: Vector3f, max: Vector3f): Vector3f {
         val minX = min.x
         val maxX = max.x
-        val minY = max.y
+        val minY = min.y
         val maxY = max.y
-        val minZ = max.z
+        val minZ = min.z
         val maxZ = max.z
         return Vector3f(
             lerp(minX, maxX),

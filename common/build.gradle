@@ -4,6 +4,7 @@ plugins {
     id 'org.jetbrains.kotlin.jvm'
     id "java-library"
     id 'kotlin'
+    id 'jacoco'
 }
 neoForge {
     neoFormVersion = neo_form_version
@@ -66,6 +67,35 @@ configurations {
     }
 }
 
+// Give the test sourceset access to the Minecraft + main compile/runtime classpath
+// (mirrors the loader subprojects) so tests can exercise classes that touch MC types.
+sourceSets {
+    test {
+        compileClasspath += main.output + main.compileClasspath
+        runtimeClasspath += main.output + main.runtimeClasspath
+    }
+}
+
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
+    finalizedBy tasks.named('jacocoTestReport')
+}
+
+// JaCoCo coverage report (HTML to read locally, XML for SonarQube ingestion).
+jacocoTestReport {
+    dependsOn tasks.named('test')
+    reports {
+        xml.required = true
+        html.required = true
+    }
+    // Exclude generated/loader-glue and rendering classes that require a live GL/MC
+    // context and are not unit-testable; keep the report focused on logic units.
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                '**/datagen/**',
+                '**/mixin/**',
+            ])
+        }))
+    }
 }
